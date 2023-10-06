@@ -1,0 +1,60 @@
+#!/usr/bin/env fish
+# File: git_root/public/dotfiles/brew_dump_and_commit.fish
+
+function pour_brew 
+    # Pours the latest Brew(file) out and sends it into the series of tubes 
+
+    # Store the initial directory
+    set initial_dir (pwd)
+
+    echo "Stage: Checking git repository"
+    set git_root (git rev-parse --show-toplevel)
+
+    if test -z "$git_root"
+        echo "Not in a git repository."
+        return 1
+    end
+
+    echo "Stage: Navigating to dotfiles directory"
+    cd $git_root/public/dotfiles/
+
+    echo "Stage: Running brew bundle dump"
+    brew bundle dump --force
+
+    echo "Stage: Adding changes to git"
+    git add Brewfile
+    set exit_status $status
+
+    if test $exit_status -ne 0
+        echo "Failed to add Brewfile."
+        cd $initial_dir
+        return 1
+    end
+
+    echo "Stage: Checking for changes to commit"
+    if test -n "(git status --porcelain)"
+        echo "Stage: Committing changes"
+        git commit -m "Update brew bundle dump"
+    else
+        echo "No changes to commit."
+    end
+
+    set exit_status $status
+
+    if test $exit_status -ne 0
+        echo "Failed to commit changes."
+        cd $initial_dir
+        return 1
+    end
+
+    echo "Stage: Pushing changes to remote"
+    git push
+    set exit_status $status
+
+    if test $exit_status -ne 0
+        echo "Failed to push changes."
+    end
+
+    echo "Stage: Returning to original directory"
+    cd $initial_dir
+end
