@@ -34,8 +34,8 @@ function ntp
     echo "Directory $dir created and switched to."
 
     if test $venv_flag -eq 1
-        python3 -m venv venv
-        source venv/bin/activate.fish
+        python3 -m venv .venv
+        source .venv/bin/activate.fish
         echo "Virtual environment created and activated."
     end
 end
