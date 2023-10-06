@@ -1,28 +1,21 @@
 #!/usr/bin/env fish
 # File: git_root/public/dotfiles/brew_dump_and_commit.fish
 
-function pour_brew 
+function pour-brew 
     # Pours the latest Brew(file) out and sends it into the series of tubes 
 
     # Store the initial directory
     set initial_dir (pwd)
 
-    echo "Stage: Checking git repository"
-    set git_root (git rev-parse --show-toplevel)
-
-    if test -z "$git_root"
-        echo "Not in a git repository."
-        return 1
-    end
 
     echo "Stage: Navigating to dotfiles directory"
-    cd $git_root/public/dotfiles/
+    cd ~/.config/
 
     echo "Stage: Running brew bundle dump"
     brew bundle dump --force
 
     echo "Stage: Adding changes to git"
-    git add Brewfile
+    yadm add Brewfile
     set exit_status $status
 
     if test $exit_status -ne 0
@@ -34,7 +27,7 @@ function pour_brew
     echo "Stage: Checking for changes to commit"
     if test -n "(git status --porcelain)"
         echo "Stage: Committing changes"
-        git commit -m "Update brew bundle dump"
+        yadm commit -m "Update brew bundle dump"
     else
         echo "No changes to commit."
     end
@@ -48,7 +41,7 @@ function pour_brew
     end
 
     echo "Stage: Pushing changes to remote"
-    git push
+    yadm push
     set exit_status $status
 
     if test $exit_status -ne 0
