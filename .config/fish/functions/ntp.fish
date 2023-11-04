@@ -28,7 +28,7 @@ function ntp
 
         if test (pwd) = $dir
             if test -d ".venv"
-                source (which deactivate)
+                deactivate
                 echo "Virtual environment deactivated."
             end
             cd ~/

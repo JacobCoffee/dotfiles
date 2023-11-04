@@ -21,6 +21,8 @@ alias find fd
 alias ls eza
 alias diff delta
 alias grep rg
+alias tree erd
+alias rtime hyperfine
 
 # general
 alias c clear
@@ -31,7 +33,7 @@ alias m make
 # python
 alias av "source .venv/bin/activate.fish"
 alias python python3
-alias pip pip3
+#alias pip pip3
 
 # work
 if test -e ~/.config/fish/work_aliases.fish
