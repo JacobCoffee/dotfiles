@@ -1,4 +1,4 @@
-icons = true
+icons = false
 human = true
 layout = "inverted"
 
@@ -22,7 +22,7 @@ level = 1
 suppress-size = true
 long = true
 
-[rs]
+#[rs]
 disk-usage = "line"
 level = 1
 pattern = "\\.rs$"

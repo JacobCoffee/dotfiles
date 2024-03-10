@@ -71,3 +71,9 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --e
 #export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 # TODO: Fix
 set -g FZF_CTRL_T_COMMAND "command find -L \$dir -type f 2> /dev/null | sed '1d; s#^\./##'"
+
+if status is-interactive
+  /opt/homebrew/opt/mise/bin/mise activate fish | source
+else
+  /opt/homebrew/opt/mise/bin/mise activate fish --shims | source
+end

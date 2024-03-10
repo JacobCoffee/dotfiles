@@ -29,6 +29,7 @@ alias c clear
 
 # projects - general
 alias m make
+alias tf terraform
 
 # python
 alias av "source .venv/bin/activate.fish"
