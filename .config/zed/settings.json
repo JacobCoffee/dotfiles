@@ -1,0 +1,69 @@
+{
+  "base_keymap": "JetBrains",
+  "theme": "Blackula",
+  "vim_mode": false,
+  "autosave": "on_focus_change",
+  "projects_online_by_default": false,
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true,
+  "show_whitespaces": "all",
+
+  "show_wrap_guides": true,
+  "wrap_guides": [88, 120],
+
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "buffer_font_family": "SauceCodePro Nerd Font",
+
+  "tab_size": 2,
+  "preferred_line_length": 120,
+  "soft_wrap": "none",
+
+  "features": {
+    "copilot": true
+  },
+
+  "git": {
+    "git_gutter": "tracked_files",
+    "gutter_debounce": 5
+  },
+
+  "calls": {
+    "mute_on_join": true
+  },
+
+  "language_overrides": {
+    "C": {
+      "format_on_save": "language_server",
+      "preferred_line_length": 64,
+      "soft_wrap": "preferred_line_length"
+    },
+    "Python": {
+      "format_on_save": "language_server",
+      "preferred_line_length": 120,
+      "soft_wrap": "preferred_line_length"
+    },
+    "Make": {
+      "hard_tabs": true,
+      "tab_size": 4
+    },
+    "Markdown": {
+      "tab_size": 4,
+      "preferred_line_length": 80
+    },
+    "Rust": {
+      "tab_size": 4
+    },
+    "YAML": {
+      "enable_language_server": false
+    }
+  },
+
+  "terminal": {
+    "font_family": "SauceCodePro Nerd Font",
+    "copy_on_select": true,
+    "shell": {
+      "program": "/opt/homebrew/bin/fish"
+    }
+  }
+}
