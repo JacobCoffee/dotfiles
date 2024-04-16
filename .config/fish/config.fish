@@ -46,7 +46,7 @@ set -x PATH $PATH $GOPATH/bin
 starship init fish | source
 
 # RTX / PyEnv / ASDF
-~/.local/share/rtx/bin/rtx activate fish | source
+#~/.local/share/rtx/bin/rtx activate fish | source
 
 # Created by `pipx` on 2023-09-30 18:53:20
 set PATH $PATH ~/.local/bin
