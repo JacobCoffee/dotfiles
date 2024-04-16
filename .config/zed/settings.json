@@ -59,6 +59,11 @@
     }
   },
 
+  "env": {
+    // A hack to make Zellij not do bad things, is there a better way?
+    "TERMINAL_EMULATOR": "JetBrains-JediTerm"
+  },
+
   "terminal": {
     "font_family": "SauceCodePro Nerd Font",
     "copy_on_select": true,
