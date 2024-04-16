@@ -39,7 +39,23 @@
       "soft_wrap": "preferred_line_length"
     },
     "Python": {
-      "format_on_save": "language_server",
+      "format_on_save": {
+        "external": {
+          "command": "ruff",
+          "arguments": [
+            "check",
+            "--exit-zero",
+            "--fix",
+            "--stdin-filename",
+            "{buffer_path}",
+            "&&",
+            "ruff",
+            "format",
+            "--stdin-filename",
+            "{buffer_path}"
+          ]
+        }
+      },
       "preferred_line_length": 120,
       "soft_wrap": "preferred_line_length"
     },
