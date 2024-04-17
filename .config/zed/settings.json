@@ -83,6 +83,9 @@
   "terminal": {
     "font_family": "SauceCodePro Nerd Font",
     "copy_on_select": true,
+    "env": {
+      "TERMINAL_EMULATOR": "JetBrains-JediTerm"
+    },
     "shell": {
       "program": "/opt/homebrew/bin/fish"
     }
