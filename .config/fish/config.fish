@@ -77,3 +77,10 @@ if status is-interactive
 else
   /opt/homebrew/opt/mise/bin/mise activate fish --shims | source
 end
+
+# pnpm
+set -gx PNPM_HOME "/Users/jcoffee5/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

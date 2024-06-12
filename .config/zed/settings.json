@@ -7,31 +7,27 @@
   "ensure_final_newline_on_save": true,
   "remove_trailing_whitespace_on_save": true,
   "show_whitespaces": "all",
-
   "show_wrap_guides": true,
-  "wrap_guides": [88, 120],
-
+  "wrap_guides": [
+    88,
+    120
+  ],
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "buffer_font_family": "SauceCodePro Nerd Font",
-
   "tab_size": 2,
   "preferred_line_length": 120,
   "soft_wrap": "none",
-
   "features": {
     "copilot": true
   },
-
   "git": {
     "git_gutter": "tracked_files",
     "gutter_debounce": 5
   },
-
   "calls": {
     "mute_on_join": true
   },
-
   "language_overrides": {
     "C": {
       "format_on_save": "language_server",
@@ -74,13 +70,17 @@
       "enable_language_server": false
     }
   },
-
   "env": {
     // A hack to make Zellij not do bad things, is there a better way?
     "TERMINAL_EMULATOR": "JetBrains-JediTerm"
   },
-
+  "project_panel": {
+    "dock": "left",
+    "git_status": true,
+    "default_width": 200
+  },
   "terminal": {
+    "blinking": "on",
     "font_family": "SauceCodePro Nerd Font",
     "copy_on_select": true,
     "env": {

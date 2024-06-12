@@ -36,6 +36,10 @@ alias av "source .venv/bin/activate.fish"
 alias python python3
 #alias pip pip3
 
+# docker
+alias dpa "docker ps -a"
+
+
 # work
 if test -e ~/.config/fish/work_aliases.fish
     source ~/.config/fish/work_aliases.fish
