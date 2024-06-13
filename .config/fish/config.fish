@@ -17,6 +17,10 @@ if status is-interactive
     end
 end
 
+# Colima / Docker
+set -x COLIMA_VM "default"
+set -x COLIMA_VM_SOCKET "$HOME/.colima/$COLIMA_VM/docker.sock"
+set -x DOCKER_HOST "unix://$COLIMA_VM_SOCKET"
 
 # Theme omf bobthefisher
 set -g theme_nerd_fonts yes
