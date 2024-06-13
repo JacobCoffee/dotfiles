@@ -20,16 +20,4 @@ This command will:
 
 Make sure to adjust any paths or repository URLs as needed for your specific setup.
 
-### Saving the Script and README
-
-1. Save the `bootstrap.sh` script in your dotfiles repository.
-2. Save the `README.md` in the root of your dotfiles repository.
-
-### Running the Script
-
-Ensure the script is executable:
-
-```sh
-chmod +x bootstrap.sh
-```
 
