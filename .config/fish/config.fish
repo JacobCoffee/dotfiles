@@ -22,6 +22,9 @@ set -x COLIMA_VM "default"
 set -x COLIMA_VM_SOCKET "$HOME/.colima/$COLIMA_VM/docker.sock"
 set -x DOCKER_HOST "unix://$COLIMA_VM_SOCKET"
 
+# Secretive
+set -x SSH_AUTH_SOCK /Users/coffee/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+
 # Theme omf bobthefisher
 set -g theme_nerd_fonts yes
 set -g theme_date_format "+%a %H:%M"
@@ -83,7 +86,7 @@ else
 end
 
 # pnpm
-set -gx PNPM_HOME "/Users/jcoffee5/Library/pnpm"
+set -gx PNPM_HOME "/Users/coffee/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
