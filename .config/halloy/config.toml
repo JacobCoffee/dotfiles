@@ -1,0 +1,7 @@
+[servers.liberachat]
+nickname = "{{ NICKNAME }}"
+server = "irc.libera.chat"
+channels = ["#python-infra"]
+
+[buffer.channel.topic]
+enabled = true
