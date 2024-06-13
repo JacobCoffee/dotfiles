@@ -1,9 +1,9 @@
 # Source Cargo environment
 if test -f ~/.cargo/env
-    source ~/.cargo/env
+    bash -c 'source ~/.cargo/env'
 end
 
-source ~/.profile
+#source ~/.profile
 source ~/.config/fish/aliases.fish
 
 # WARN: We can no longer have this in `is-interactive` because PyCharm, et al fail
@@ -43,7 +43,7 @@ set -x PATH $PATH $GOPATH/bin
 
 
 # Starship
-starship init fish | source
+/opt/homebrew/bin/starship init fish | source
 
 # RTX / PyEnv / ASDF
 #~/.local/share/rtx/bin/rtx activate fish | source
