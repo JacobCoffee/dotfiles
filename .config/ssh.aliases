@@ -1,0 +1,81 @@
+# Add into `~/.ssh/config` file as `Include /Users/coffee/.config/ssh.aliases`
+
+Host backup
+    HostName backup.sfo1.psf.io
+    User coffee
+
+Host bugs
+    HostName bugs.nyc1.psf.io
+    User coffee
+
+Host buildbot
+    HostName buildbot.nyc1.psf.io
+    User coffee
+
+Host cdn-logs cdnlogs logs
+    HostName cdn-logs.nyc1.psf.io
+    User coffee
+
+Host codespeed
+    HostName codespeed.nyc1.psf.io
+    User coffee
+
+Host consul-a con-a cona
+    HostName consul-a.nyc1.psf.io
+    User coffee
+
+Host consul-b con-b conb
+    HostName consul-b.nyc1.psf.io
+    User coffee
+
+Host consul-c con-c conc
+    HostName consul-c.nyc1.psf.io
+    User coffee
+
+Host docs
+    HostName docs.nyc1.psf.io
+    User coffee
+
+Host downloads
+    HostName downloads.nyc1.psf.io
+    User coffee
+
+Host gnumailman gmm
+    HostName gnumailman.nyc1.psf.io
+    User coffee
+
+Host hg
+    HostName hg.nyc1.psf.io
+    User coffee
+
+Host lb-a lba
+    HostName lb-a.nyc1.psf.io
+    User coffee
+
+Host lb-b lbb
+    HostName lb-b.nyc1.psf.io
+    User coffee
+
+Host mail
+    HostName mail.ams1.psf.io
+    User coffee
+
+Host moin
+    HostName moin.nyc1.psf.io
+    User coffee
+
+Host planet
+    HostName planet.nyc1.psf.io
+    User coffee
+
+Host pypy-web pypyweb pypy
+    HostName pypy-web.nyc1.psf.io
+    User coffee
+
+Host pythontest
+    HostName pythontest.nyc3.psf.io
+    User coffee
+
+Host salt
+    HostName salt.nyc1.psf.io
+    User coffee
