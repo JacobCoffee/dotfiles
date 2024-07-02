@@ -18,12 +18,12 @@ if status is-interactive
 end
 
 # Colima / Docker
-set -x COLIMA_VM "default"
-set -x COLIMA_VM_SOCKET "$HOME/.colima/$COLIMA_VM/docker.sock"
-set -x DOCKER_HOST "unix://$COLIMA_VM_SOCKET"
+#set -x COLIMA_VM "default"
+#set -x COLIMA_VM_SOCKET "$HOME/.colima/$COLIMA_VM/docker.sock"
+#set -x DOCKER_HOST "unix://$COLIMA_VM_SOCKET"
 
 # Secretive
-set -x SSH_AUTH_SOCK /Users/coffee/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+#set -x SSH_AUTH_SOCK /Users/coffee/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
 # Theme omf bobthefisher
 set -g theme_nerd_fonts yes
