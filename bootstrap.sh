@@ -45,7 +45,7 @@ clone_repos() {
     done
 }
 
-# Clone repositories for public/litestar-org
+# Clone repositories for Litestar
 clone_repos ~/git/public/litestar-org \
     litestar-org/litestar \
     litestar-org/litestar-fullstack \
@@ -58,23 +58,53 @@ clone_repos ~/git/public/litestar-org \
     litestar-org/awesome-litestar \
     litestar-org/branding
 
-# Clone repositories for public/JacobCoffee
+# Clone repositories for my personal things
 clone_repos ~/git/public/JacobCoffee \
-    JacobCoffee/byte
+    JacobCoffee/byte \
+    JacobCoffee/dotfiles
 
-# Clone repositories for internal/python
+# Clone repositories for Python
 clone_repos ~/git/internal/python \
     python/psf-salt \
     python/devguide \
-    python/pythondotorg
+    python/pythondotorg \
+    python/psf-packages \
+    python/planet \
+    python/pycon-infra \
 
-# Clone repositories for internal/psf
+# Clone repositories for PSF
 clone_repos ~/git/internal/psf \
     psf/policies
 
-# Clone repositories for internal/pypi
+# Clone repositories for PyPI
 clone_repos ~/git/internal/pypi \
-    pypi/warehouse
+    pypi/warehouse \
+    pypi/warehouse \
+    pypi/conveyor \
+    pypi/camo \
+    pypi/inspector \
+    pypi/infra \
+    pypi/linehaul-cloud-function \
+    pypi/warehouse-private \
+    pypi/admin-shell-hax \
+    pypi/support \
+
+# Clone repositories for PyCon
+clone_repos ~/git/internal/pycon \
+    pycon/pycon-site \
+    pycon/pycon.org \
+    pycon/badge-gen \
+
+# Clone repositories for Cabotage
+clone_repos ~/git/internal/cabotage \
+    cabotage/cabotage-app \
+    cabotage/test-app
 
 echo "✅ Repositories cloned successfully."
 echo "🎉 Bootstrap script completed successfully."
+
+echo "Linking dotfiles..."
+./link.sh
+
+echo "Configuring global gitignore..."
+git config --global core.excludesfile ~/.config/global.gitignore

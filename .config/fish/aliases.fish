@@ -39,6 +39,11 @@ alias python python3
 # docker
 alias dpa "docker ps -a"
 
+# vagrant
+alias vs "vagrant ssh"
+alias vu "vagrant up"
+alias vd "vagrant destroy"
+alias vp "vagrant provision"
 
 # work
 if test -e ~/.config/fish/work_aliases.fish

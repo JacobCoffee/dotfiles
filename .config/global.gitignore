@@ -1,0 +1,31 @@
+# General
+.idea
+Thumbs.db
+.vscode
+.DS_Store
+.env
+
+
+# Python
+.mypy_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytest_cache/
+.ruff_cache/
+/docs/_build/
+coverage.*
+.coverage
+**/*.sqlit*
+.venv
+venv
+__pycache__/
+dist/
+.tox/
+.nox/
+
+# Jabbascript
+node_modules/
+package.lock
+composer.lock
+
