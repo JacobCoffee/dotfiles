@@ -101,10 +101,11 @@ clone_repos ~/git/internal/cabotage \
     cabotage/test-app
 
 echo "✅ Repositories cloned successfully."
-echo "🎉 Bootstrap script completed successfully."
 
 echo "Linking dotfiles..."
 ./link.sh
 
 echo "Configuring global gitignore..."
 git config --global core.excludesfile ~/.config/global.gitignore
+
+echo "🎉 Bootstrap script completed successfully."
