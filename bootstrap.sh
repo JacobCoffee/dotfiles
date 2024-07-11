@@ -103,7 +103,10 @@ clone_repos ~/git/internal/cabotage \
 echo "✅ Repositories cloned successfully."
 
 echo "Linking dotfiles..."
-./link.sh
+./scripts/link.sh
+
+echo "Configuring DNS..."
+./scripts/dns.sh
 
 echo "Configuring global gitignore..."
 git config --global core.excludesfile ~/.config/global.gitignore
