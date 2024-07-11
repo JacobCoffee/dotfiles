@@ -74,10 +74,17 @@ function get_config() {
 
 # -- run it
 function main() {
-  echo "The following entries will be added to /etc/hosts:"
-  get_config
+  local entries=$(get_config | grep "Adding")
+  local entries_count=$(echo "$entries" | wc -l)
 
-  echo "Entries have been added to /etc/hosts"
+  if [ -n "$entries" ]; then
+    echo "The following entries will be added to /etc/hosts:"
+    echo "$entries"
+    echo ""
+    echo "$entries_count entries have been added to /etc/hosts"
+  else
+    echo "⚠️ No entries were added to /etc/hosts"
+  fi
 }
 
 main "$@"
