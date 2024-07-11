@@ -19,7 +19,7 @@ function add_to_hosts() {
 
 # -- Function to process hostnames and IP
 function process_host() {
-  local alias
+  local alias ip
   local hostnames=$1
   local hostname=$2
 
@@ -27,7 +27,7 @@ function process_host() {
     return 0
   fi
 
-  local ip=$(dig +short "$hostname" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' | head -n1)
+  ip=$(dig +short "$hostname" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' | head -n1)
 
   if [ -n "$ip" ]; then
     #    echo "Resolved IP for $hostname: $ip" >&2
@@ -44,14 +44,14 @@ function process_host() {
 function process_config_file() {
   local file=$1
   local line_number=0
-  local hostnames hostname line
+  local hostnames hostname line included_file
 
   echo "Reading SSH config file: $file" >&2
   while IFS= read -r line; do
     ((line_number++))
     #    echo "Line $line_number: $line" >&2
     if [[ $line =~ ^Include ]]; then
-      local included_file=$(echo "$line" | awk '{print $2}')
+      included_file=$(echo "$line" | awk '{print $2}')
       included_file="${included_file/#\~/$HOME}"
       #      echo "Processing included file: $included_file" >&2
       process_config_file "$included_file"
