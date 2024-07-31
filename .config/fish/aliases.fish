@@ -44,6 +44,11 @@ alias vs "vagrant ssh"
 alias vu "vagrant up"
 alias vd "vagrant destroy"
 alias vp "vagrant provision"
+alias vss "vagrant status"
+
+# ai
+alias ghce "gh copilot explain"
+alias ghcs "gh copilot suggest"
 
 # work
 if test -e ~/.config/fish/work_aliases.fish

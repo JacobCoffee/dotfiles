@@ -2,6 +2,7 @@ function ntp
     set venv_flag 0
     set dir_name ""
     set action "create"
+    set python_version "3.12"
 
     for arg in $argv
         switch $arg
@@ -9,13 +10,15 @@ function ntp
                 set venv_flag 1
             case 'close'
                 set action "close"
+            case '3.*'
+                set python_version $arg
             case '*'
                 set dir_name $arg
         end
     end
 
     if test $action != "close" -a -z "$dir_name"
-        echo "Usage: ntp [-v --venv] <word> or ntp close [dirname]"
+        echo "Usage: ntp [-v --venv] [python_version] <word> or ntp close [dirname]"
         return 1
     end
 
@@ -57,8 +60,8 @@ function ntp
     echo "Directory $dir created and switched to."
 
     if test $venv_flag -eq 1
-        python3 -m venv .venv
+        uv venv --python $python_version --seed .venv
         source .venv/bin/activate.fish
-        echo "Virtual environment created and activated."
+        echo "Virtual environment created with Python $python_version and activated."
     end
 end
