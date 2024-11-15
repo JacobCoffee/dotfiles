@@ -23,6 +23,7 @@ alias diff delta
 alias grep rg
 alias tree erd
 alias rtime hyperfine
+alias ftp ncftp 
 
 # general
 alias c clear

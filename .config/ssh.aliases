@@ -20,16 +20,16 @@ Host codespeed
     HostName codespeed.nyc1.psf.io
     User coffee
 
-Host consul-a con-a cona
-    HostName consul-a.nyc1.psf.io
+Host consul-1 con-1 con1
+    HostName consul-1.nyc1.psf.io
     User coffee
 
-Host consul-b con-b conb
-    HostName consul-b.nyc1.psf.io
+Host consul-2 con-2 con2
+    HostName consul-2.nyc1.psf.io
     User coffee
 
-Host consul-c con-c conc
-    HostName consul-c.nyc1.psf.io
+Host consul-3 con-3 con3
+    HostName consul-3.nyc1.psf.io
     User coffee
 
 Host docs

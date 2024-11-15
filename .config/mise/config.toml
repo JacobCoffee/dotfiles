@@ -8,3 +8,4 @@ fzf = "latest"
 golang = 'latest'
 kubectl = "1.27"
 opentofu = "1.7"
+ruby = "2"
