@@ -37,8 +37,11 @@ alias av "source .venv/bin/activate.fish"
 alias python python3
 #alias pip pip3
 
-# docker
+# docker / k8s
 alias dpa "docker ps -a"
+alias k "kubectl"
+alias kga "kubectl get all"
+alias kgap "kubectl get -A pods"
 
 # vagrant
 alias vs "vagrant ssh"
