@@ -8,8 +8,10 @@ source ~/.config/fish/aliases.fish
 
 # WARN: We can no longer have this in `is-interactive` because PyCharm, et al fail
 set -x GPG_TTY (tty)
-set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
+set -x SSH_AUTH_SOCK /Users/coffee/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+# Secretive in favor of gpg-agent
+#set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+#gpgconf --launch gpg-agent
 
 if status is-interactive
     if test "$TERMINAL_EMULATOR" != "JetBrains-JediTerm"
@@ -91,3 +93,11 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# cpython build stuff
+set -x CPPFLAGS "-I"(brew --prefix)"/include"
+set -x LDFLAGS "-L"(brew --prefix)"/lib"
