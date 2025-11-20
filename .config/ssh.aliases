@@ -59,6 +59,7 @@ Host lb-b lbb
 Host mail
     HostName mail.ams1.psf.io
     User coffee
+    PubkeyAcceptedKeyTypes +ssh-rsa
 
 Host moin
     HostName moin.nyc1.psf.io
