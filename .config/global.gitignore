@@ -4,6 +4,8 @@ Thumbs.db
 .vscode
 .DS_Store
 .env
+.code-workspace
+.claude/
 
 
 # Python
