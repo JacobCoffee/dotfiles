@@ -101,3 +101,7 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 # cpython build stuff
 set -x CPPFLAGS "-I"(brew --prefix)"/include"
 set -x LDFLAGS "-L"(brew --prefix)"/lib"
+
+
+set -gx BUN_INSTALL "$HOME/.bun"
+set -gx PATH "$BUN_INSTALL/bin" $PATH
