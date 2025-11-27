@@ -2,7 +2,7 @@
 python = ["3.14", "3.13", "3.12", "3.9", "3.10"]
 usage = "latest"
 terraform = "latest"
-node = ["latest", "lts"]
+node = ["22.16.0", "latest", "lts"]
 dive = "latest"
 fzf = "latest"
 golang = 'latest'
