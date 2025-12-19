@@ -7,7 +7,7 @@ function wt --description "Git worktree helpers"
             echo "Usage: wt <command> [args]"
             echo ""
             echo "Commands:"
-            echo "  ls, list      List all worktrees"
+            echo "  ls, list      List worktrees (short names, -l for long)"
             echo "  j, jump       Jump to worktree (fuzzy match)"
             echo "  new, add      Create new worktree in .worktrees/"
             echo "  rm, remove    Remove a worktree"
@@ -18,7 +18,11 @@ function wt --description "Git worktree helpers"
             echo "  wt j docs        # jump to worktree matching 'docs'"
             echo "  wt new feature   # create .worktrees/feature"
         case ls list
-            __wt_list
+            if contains -- -l $args; or contains -- --long $args
+                __wt_list_long
+            else
+                __wt_list
+            end
         case j jump
             __wt_jump $args
         case new add
@@ -53,7 +57,45 @@ function __wt_all --description "Get all worktrees (git tracked + .worktrees/)"
     printf '%s\n' $worktrees | sort -u
 end
 
-function __wt_list --description "List all worktrees"
+function __wt_list --description "List worktrees (short names)"
+    set -l root (__wt_root)
+    set -l wt_dir "$root/.worktrees"
+    set -l in_worktrees
+    set -l other
+
+    # Parse git worktree list
+    set -l current_path ""
+    git worktree list --porcelain 2>/dev/null | while read -l line
+        if string match -q "worktree *" -- $line
+            set current_path (string replace "worktree " "" -- $line)
+        else if string match -q "branch refs/heads/*" -- $line
+            set -l branch (string replace "branch refs/heads/" "" -- $line)
+            if string match -q "$wt_dir/*" -- $current_path
+                set -a in_worktrees $branch
+            else
+                set -a other $branch
+            end
+        end
+    end
+
+    # Show main repo worktrees
+    if test (count $other) -gt 0
+        echo "branches:"
+        for b in $other
+            echo "  $b"
+        end
+    end
+
+    # Show .worktrees/ group
+    if test (count $in_worktrees) -gt 0
+        echo ".worktrees/:"
+        for b in $in_worktrees
+            echo "  $b"
+        end
+    end
+end
+
+function __wt_list_long --description "List worktrees (full paths)"
     echo "Git tracked:"
     git worktree list
 

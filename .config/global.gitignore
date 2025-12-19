@@ -35,3 +35,7 @@ wheels/
 node_modules/
 package.lock
 composer.lock
+
+.claude/
+.claude-flow/
+.hive-mind/
