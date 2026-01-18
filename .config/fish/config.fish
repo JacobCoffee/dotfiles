@@ -71,6 +71,24 @@ zoxide init fish | source
 alias cd=z
 alias cdi=zi
 
+# AWS profile switching
+alias aws-psf='set -gx AWS_PROFILE psf-kops'
+alias aws-pypi='set -gx AWS_PROFILE pypi-kops'
+
+function awsp
+    switch $argv[1]
+        case psf
+            set -gx AWS_PROFILE psf-kops
+        case pypi
+            set -gx AWS_PROFILE pypi-kops
+        case shortlist
+            set -gx AWS_PROFILE shortlist
+        case '*'
+            set -gx AWS_PROFILE $argv[1]
+    end
+    echo "AWS_PROFILE → $AWS_PROFILE"
+end
+
 # MOTD bs
 set fish_greeting
 

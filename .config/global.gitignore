@@ -39,3 +39,11 @@ composer.lock
 .claude/
 .claude-flow/
 .hive-mind/
+.hive/
+.swarm/
+
+# android studio, google play, app store
+google-play-keystore
+
+# things i dont want commited in any repo
+internal/

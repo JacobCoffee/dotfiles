@@ -1,7 +1,7 @@
 [tools]
 usage = "latest"
 terraform = "latest"
-node = ["22.16.0", "latest", "lts"]
+node = ["22.16.0", "24", "latest", "lts"]
 dive = "latest"
 fzf = "latest"
 golang = 'latest'

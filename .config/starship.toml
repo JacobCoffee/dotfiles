@@ -149,6 +149,7 @@ format = '[⎈ $version]($style) '
 style = 'bold white'
 
 [custom.mise]
+disabled = true
 command = 'mise current 2>/dev/null | cut -d" " -f1-2 | tr "\n" " "'
 when = 'test -f .mise.toml || test -f mise.toml'
 format = '[󱓞 $output]($style)'

@@ -17,7 +17,7 @@ function wt --description "Git worktree helpers"
             echo "  wt ls"
             echo "  wt j docs        # jump to worktree matching 'docs'"
             echo "  wt new feature   # create .worktrees/feature"
-        case ls list
+        case l ls list
             if contains -- -l $args; or contains -- --long $args
                 __wt_list_long
             else
