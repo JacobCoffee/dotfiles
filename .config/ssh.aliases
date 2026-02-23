@@ -61,7 +61,7 @@ Host mail
     User coffee
     PubkeyAcceptedKeyTypes +ssh-rsa
 
-Host moin
+Host moin wiki
     HostName moin.nyc1.psf.io
     User coffee
 

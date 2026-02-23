@@ -36,6 +36,7 @@ node_modules/
 package.lock
 composer.lock
 
+AGENTS.md
 .claude/
 .claude-flow/
 .hive-mind/
@@ -47,3 +48,8 @@ google-play-keystore
 
 # things i dont want commited in any repo
 internal/
+
+plan.json
+
+# cabo
+docker-compose.override.yml

@@ -40,21 +40,49 @@ function __wt_root --description "Get repo root"
     git rev-parse --show-toplevel 2>/dev/null
 end
 
-function __wt_all --description "Get all worktrees (git tracked + .worktrees/)"
+function __wt_all --description "Get all worktrees as path<TAB>branch pairs"
     set -l root (__wt_root)
-    set -l worktrees
+    set -l seen_paths
+    set -l current_path ""
+    set -l current_branch ""
 
-    set -a worktrees (git worktree list --porcelain 2>/dev/null | grep "^worktree" | cut -d' ' -f2-)
-
-    if test -n "$root" -a -d "$root/.worktrees"
-        for dir in $root/.worktrees/*/
-            if test -d "$dir"
-                set -a worktrees (string trim -r -c '/' "$dir")
+    git worktree list --porcelain 2>/dev/null | while read -l line
+        if string match -q "worktree *" -- $line
+            set current_path (string replace "worktree " "" -- $line)
+            set current_branch ""
+        else if string match -q "branch refs/heads/*" -- $line
+            set current_branch (string replace "branch refs/heads/" "" -- $line)
+        else if test -z "$line" -a -n "$current_path"
+            if test -z "$current_branch"
+                set current_branch (basename "$current_path")
             end
+            printf '%s\t%s\n' "$current_path" "$current_branch"
+            set -a seen_paths "$current_path"
+            set current_path ""
+            set current_branch ""
         end
     end
 
-    printf '%s\n' $worktrees | sort -u
+    # Flush last entry if no trailing blank line
+    if test -n "$current_path"
+        if test -z "$current_branch"
+            set current_branch (basename "$current_path")
+        end
+        printf '%s\t%s\n' "$current_path" "$current_branch"
+        set -a seen_paths "$current_path"
+    end
+
+    # .worktrees/ entries not already git-tracked
+    if test -n "$root" -a -d "$root/.worktrees"
+        for dir in $root/.worktrees/*/
+            if test -d "$dir"
+                set -l wt_path (string trim -r -c '/' "$dir")
+                if not contains -- "$wt_path" $seen_paths
+                    printf '%s\t%s\n' "$wt_path" (basename "$wt_path")
+                end
+            end
+        end
+    end
 end
 
 function __wt_list --description "List worktrees (short names)"
@@ -112,28 +140,30 @@ function __wt_list_long --description "List worktrees (full paths)"
 end
 
 function __wt_jump --description "Jump to a worktree"
-    set -l worktrees (__wt_all)
+    set -l pairs (__wt_all)
 
-    if test -z "$worktrees"
+    if test (count $pairs) -eq 0
         echo "No worktrees found"
         return 1
     end
 
     if test (count $argv) -eq 0
         if type -q fzf
-            set -l selected (printf '%s\n' $worktrees | fzf --height 40% --reverse --prompt="wt> ")
+            set -l selected (printf '%s\n' $pairs | fzf --height 40% --reverse --prompt="wt> " --delimiter='\t' --with-nth=2)
             if test -n "$selected"
-                cd "$selected"
+                builtin cd (string split \t -- "$selected")[1]
             end
         else
-            printf '%s\n' $worktrees
+            for pair in $pairs
+                echo "  "(string split \t -- "$pair")[2]
+            end
             echo ""
             echo "Install fzf for interactive selection, or: wt j <pattern>"
         end
     else
-        set -l match (printf '%s\n' $worktrees | grep -i "$argv[1]" | head -1)
+        set -l match (printf '%s\n' $pairs | grep -i "$argv[1]" | head -1)
         if test -n "$match"
-            cd "$match"
+            builtin cd (string split \t -- "$match")[1]
         else
             echo "No worktree matching: $argv[1]"
             return 1
@@ -167,33 +197,42 @@ function __wt_new --description "Create a new worktree"
     mkdir -p "$worktree_dir"
     git worktree add -b "$name" "$worktree_path" "$base"
     and echo "Created worktree at $worktree_path"
-    and cd "$worktree_path"
+    and if test -f "$root/.env"
+        cp "$root/.env" "$worktree_path/.env"
+        echo "Copied .env to worktree"
+    end
+    and builtin cd "$worktree_path"
 end
 
 function __wt_remove --description "Remove a worktree"
-    set -l worktrees (__wt_all)
+    set -l pairs (__wt_all)
 
-    if test -z "$worktrees"
+    if test (count $pairs) -eq 0
         echo "No worktrees found"
         return 1
     end
 
     if test (count $argv) -eq 0
         if type -q fzf
-            set -l selected (printf '%s\n' $worktrees | fzf --height 40% --reverse --prompt="remove> ")
+            set -l selected (printf '%s\n' $pairs | fzf --height 40% --reverse --prompt="remove> " --delimiter='\t' --with-nth=2)
             if test -n "$selected"
-                git worktree remove "$selected"
+                set -l path (string split \t -- "$selected")[1]
+                git worktree remove "$path"
             end
         else
             echo "Usage: wt rm <pattern>"
-            printf '%s\n' $worktrees
+            for pair in $pairs
+                echo "  "(string split \t -- "$pair")[2]
+            end
         end
     else
-        set -l match (printf '%s\n' $worktrees | grep -i "$argv[1]" | head -1)
+        set -l match (printf '%s\n' $pairs | grep -i "$argv[1]" | head -1)
         if test -n "$match"
-            read -l -P "Remove $match? [y/N] " confirm
+            set -l path (string split \t -- "$match")[1]
+            set -l branch (string split \t -- "$match")[2]
+            read -l -P "Remove $branch ($path)? [y/N] " confirm
             if test "$confirm" = y -o "$confirm" = Y
-                git worktree remove "$match"
+                git worktree remove "$path"
             end
         else
             echo "No worktree matching: $argv[1]"

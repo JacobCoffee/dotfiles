@@ -13,6 +13,11 @@ end
 alias v nvim
 alias vim nvim
 alias g git
+alias gs 'git status'
+alias ga 'git add -p'
+alias gsw 'git switch'
+alias gd 'git diff'
+alias gc 'git commit -m'
 alias gx gix
 alias zj zellij
 alias cat bat
