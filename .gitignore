@@ -1,1 +1,5 @@
 .idea/*
+
+# fish universal variables: machine-specific and where `set -Ux` secrets land
+.config/fish/fish_variables
+*.bak

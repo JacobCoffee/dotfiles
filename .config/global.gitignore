@@ -7,6 +7,12 @@ Thumbs.db
 .code-workspace
 .claude/
 .worktrees/
+.nodeterm/
+.impeccable.md
+PRODUCT.md
+DESIGN.md
+DESIGN.json
+Dockerfile.dockerignore
 
 
 # Python
@@ -37,11 +43,14 @@ package.lock
 composer.lock
 
 AGENTS.md
+CLAUDE.md
 .claude/
 .claude-flow/
 .hive-mind/
 .hive/
 .swarm/
+.pip-cache/
+.pip-tools-cache/
 
 # android studio, google play, app store
 google-play-keystore
