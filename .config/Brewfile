@@ -1,150 +1,231 @@
-tap "adoptopenjdk/openjdk"
-tap "dart-lang/dart"
+tap "anthropics/tap"
+tap "dart-lang/dart", trusted: { formulae: ["dart", "dart-beta"] }
 tap "dracula/install"
 tap "fastly/tap"
+tap "ggfevans/claude-usage-tracker"
 tap "grafana/grafana"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "jesseduffield/lazygit"
-tap "macos-fuse-t/cask"
+tap "macos-fuse-t/cask", trusted: { casks: ["fuse-t"] }
+tap "minio/stable"
 tap "nextfire/tap"
 tap "railwayapp/tap"
 tap "sass/sass"
 tap "sergiobenitez/osxct"
-brew "act"
-brew "openssl@3"
-brew "cryptography"
+tap "stripe/stripe-cli"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3", link: true
+# Library for decimal floating point arithmetic
 brew "mpdecimal"
+# Command-line interface for SQLite
+brew "sqlite"
+# General-purpose data compression with high compression ratio
 brew "xz"
-brew "ansible"
+# Zstandard is a real-time compression algorithm
 brew "zstd"
+# Official Amazon AWS command-line interface
 brew "awscli"
-brew "libgit2"
-brew "bat"
-brew "bottom"
-brew "broot"
+# GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
+# Core application library for C
 brew "glib"
-brew "cfssl"
+# Vector graphics library with cross-device output support
+brew "cairo"
+# Cross-platform make
 brew "cmake"
+# Dependency manager for Cocoa projects
 brew "cocoapods"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Cryptographic recipes and primitives for Python
+brew "cryptography"
+# Top-like interface for container metrics
 brew "ctop"
+# Message bus system, providing inter-application communication
 brew "dbus"
+# Pack, ship and run any application as a lightweight container
 brew "docker"
+# Isolated development environments using Docker
 brew "docker-compose"
+# GNU database manager
 brew "gdbm"
+# Debian package management system
 brew "dpkg"
-brew "dust"
+# Spellchecker wrapping library
 brew "enchant"
-brew "erdtree"
+# ODBC 3 connectivity for UNIX
 brew "unixodbc"
+# Programming language for highly scalable real-time systems
 brew "erlang"
-brew "eza"
+# Provide a fake root environment
 brew "fakeroot"
+# Easiest way to build and release mobile apps
 brew "fastlane"
-brew "fd"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
-brew "fzf"
-brew "gdu"
+# GitHub command-line tool
 brew "gh"
-brew "harfbuzz"
-brew "git-cliff"
+# C library of Git core methods that is re-entrant and linkable
+brew "libgit2"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Git extension for versioning large files
 brew "git-lfs"
-brew "gitoxide"
+# Erlang build tool
 brew "rebar3"
+# Statically typed language for the Erlang VM
 brew "gleam"
-brew "unbound"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-brew "grex"
-brew "helix"
-brew "helm"
+# CLI for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more
+brew "googleworkspace-cli"
+# OpenType text shaping engine
+brew "harfbuzz"
+# Command-line tools for OpenPGP-related operations
 brew "hopenpgp-tools"
+# Website copier/offline browser
 brew "httrack"
-brew "hurl"
-brew "hwatch"
-brew "hyperfine"
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# CLI wrapper for basic network utilities on macOS - ip command
 brew "iproute2mac"
-brew "jq"
+# CloudNativePG plugin for kubectl
+brew "kubectl-cnpg"
+# Kubernetes command-line interface
 brew "kubernetes-cli"
-brew "lazygit"
+# Conversion library
 brew "libiconv"
+# Implementation of the file(1) command
 brew "libmagic"
+# C virtualization API
 brew "libvirt", restart_service: :changed
+# Linux virtual machines
 brew "lima"
+# Run a Kubernetes cluster locally
 brew "minikube"
+# Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# FTP client with an advanced user interface
 brew "ncftp"
-brew "neovim"
+# RSS/Atom feed reader for text terminals
 brew "newsboat"
+# Port scanning utility for large networks
 brew "nmap"
+# Open source suite of directory software
 brew "openldap"
+# Cryptography and SSL/TLS Toolkit
 brew "openssl@3.0"
-brew "pandoc"
+# Framework for layout and rendering of i18n text
+brew "pango"
+# Shell command parallelization utility
 brew "parallel"
+# Pinentry for GPG on Mac
 brew "pinentry-mac"
-brew "pipx"
+# Package compiler and linker metadata toolkit
 brew "pkgconf"
-brew "poetry"
+# Object-relational database system
 brew "postgresql@14"
+# Object-relational database system
 brew "postgresql@16"
-brew "py-spy"
+# Generic machine emulator and virtualizer
 brew "qemu"
-brew "railway"
+# Persistent key-value database, with built-in net interface
 brew "redis"
-brew "ripgrep"
-brew "rye"
-brew "sad"
-brew "sd"
-brew "sk"
+# Non-interactive SSH password auth
 brew "sshpass"
+# Cross-shell prompt for astronauts
 brew "starship"
-brew "stern"
-brew "tailspin"
+# Tool Command Language
 brew "tcl-tk"
-brew "tealdeer"
+# User interface to the TELNET protocol
 brew "telnet"
-brew "terraformer"
-brew "tokei"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# Vi 'workalike' with many additional features
 brew "vim"
-brew "websocat"
+# Internet file retriever
 brew "wget"
+# Yet Another Dotfiles Manager
 brew "yadm"
+# JavaScript package manager
 brew "yarn"
+# Tool for managing your YubiKey configuration
 brew "ykman"
+# YubiKey personalization library and tool
 brew "ykpers"
-brew "yq"
-brew "zellij"
+# Suite of barcodes-reading tools
+brew "zbar"
+# General-purpose lossless data-compression library
 brew "zlib"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
-brew "fastly/tap/fastly"
-brew "grafana/grafana/alloy"
-brew "hashicorp/tap/consul"
-brew "hashicorp/tap/terraform"
-brew "hashicorp/tap/vault"
-brew "nextfire/tap/apple-music-discord-rpc"
-brew "railwayapp/tap/nixpacks"
-brew "sass/sass/sass"
-brew "sergiobenitez/osxct/x86_64-unknown-linux-gnu"
-cask "adoptopenjdk8"
+# Geo-scale, next-generation sharing platform built on top of OpenZiti
+brew "zrok"
+# Discord Rich Presence Client for the macOS Apple Music app and iTunes
+brew "nextfire/tap/apple-music-discord-rpc", trusted: true
+# x86_64 Linux GNU Toolchain
+brew "sergiobenitez/osxct/x86_64-unknown-linux-gnu", trusted: true
+# CLI for the Claude Platform
+cask "anthropics/tap/ant", trusted: true
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Collaboration tool with multi-user screen sharing
 cask "coscreen"
+# Dark theme for Terminal.app
 cask "dracula-terminal"
+# Kext-less implementation of FUSE
 cask "fuse-t"
-cask "fuse-t-sshfs"
+# SSHFS implementation based on FUSE-T
+cask "macos-fuse-t/cask/fuse-t-sshfs", trusted: true
+# IRC client
 cask "halloy"
 cask "hashicorp-vagrant"
-cask "jordanbaird-ice"
+# Automation software
+cask "keyboard-maestro"
+# Free and open-source RSS reader
 cask "netnewswire"
+# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# Replacement for Docker Desktop
 cask "orbstack"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Store SSH keys in the Secure Enclave
 cask "secretive"
+# Screenshot measurement and annotation tool
 cask "shottr"
+# Team communication and collaboration software
 cask "slack"
+# JDK from the Eclipse Foundation (Adoptium)
+cask "temurin@8"
+# Menu bar manager
+cask "thaw@beta"
+# Development environment
 cask "vagrant"
+# Audio transcription that works with local and cloud models
+cask "whispering"
+mas "1Password for Safari", id: 1569813296
+mas "Apple Configurator", id: 1037126344
+mas "Bitwarden", id: 1352778147
+mas "Developer", id: 640199958
+mas "Flighty", id: 1358823008
+mas "Home Assistant", id: 1099568401
+mas "IPTV Expert", id: 1641944027
+mas "keymapp", id: 6472865291
+mas "Keynote", id: 409183694
+mas "NotePlan", id: 1505432629
+mas "Numbers", id: 409203825
+mas "OneDrive", id: 823766827
+mas "Pages", id: 409201541
+mas "Parcel Classic", id: 639968404
+mas "Reolink Client", id: 1086871235
+mas "WhatsApp", id: 310633997
 vscode "github.vscode-github-actions"
 vscode "ionic.ionic"
 vscode "k--kato.intellij-idea-keybindings"
@@ -156,5 +237,5 @@ vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode.makefile-tools"
 vscode "swiftlang.swift-vscode"
 vscode "vadimcn.vscode-lldb"
-go "cmd/go"
-go "cmd/gofmt"
+npm "better-sqlite3"
+npm "corepack"
