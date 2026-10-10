@@ -16,8 +16,15 @@ alias g git
 alias gs 'git status'
 alias ga 'git add -p'
 alias gsw 'git switch'
+alias gswm 'git switch main'
 alias gd 'git diff'
+alias gde 'git diff --name-only | fzf --multi | xargs nvim'
+alias gdc 'git diff --cached'
 alias gc 'git commit -m'
+alias gro 'gh repo view --web'
+alias gpo 'gh pr view --web' 
+alias gcfp 'git commit -m "fmt" && git push'
+alias gl "git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --all"
 alias gx gix
 alias zj zellij
 alias cat bat
@@ -63,3 +70,10 @@ alias ghcs "gh copilot suggest"
 if test -e ~/.config/fish/work_aliases.fish
     source ~/.config/fish/work_aliases.fish
 end
+
+# dev logs (PTY-preserving capture for Claude Code)
+alias dev-log "mkdir -p logs; script -qF logs/dev.log make dev"
+
+# gh cli
+alias grv "gh repo view --web"
+

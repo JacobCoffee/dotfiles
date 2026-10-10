@@ -15,6 +15,8 @@ $custom\
 $direnv
 $character"""
 
+# Allow occasional slow directory scans without a large prompt delay.
+scan_timeout = 100
 command_timeout = 10000
 
 # Right-side prompt with git metrics, time, and command duration
@@ -97,7 +99,7 @@ style = 'bold red'
 symbol = '⚠ '
 
 [docker_context]
-format = '[🐋 $context](blue bold) '
+format = '[🐋 $context](blue bold) [│](dimmed white) '
 
 [java]
 symbol = '🌟 '
@@ -147,6 +149,15 @@ style = 'bold 105'
 [helm]
 format = '[⎈ $version]($style) '
 style = 'bold white'
+
+# Dexcom glucose + trend: https://github.com/JacobCoffee/dexcom-starship
+[custom.dexcom]
+command = 'dexcom-starship prompt'
+when = 'command -v dexcom-starship >/dev/null'
+shell = ['sh']
+format = '([$output]($style) [│](dimmed white) )'
+style = 'bold 117'
+description = 'Dexcom glucose reading'
 
 [custom.mise]
 disabled = true

@@ -21,3 +21,6 @@ This command will:
 Make sure to adjust any paths or repository URLs as needed for your specific setup.
 
 
+## Dexcom glucose in the prompt
+
+`starship.toml` shows the latest Dexcom Share reading after the Docker context via [dexcom-starship](https://github.com/JacobCoffee/dexcom-starship). The segment stays hidden until the tool is installed. See that repo's README for install, credentials (`~/.config/dexcom.env`, kept out of this repo) and troubleshooting.

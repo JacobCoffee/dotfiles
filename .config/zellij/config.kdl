@@ -364,6 +364,9 @@ pane_frames false
 // 
 // scroll_buffer_size 10000
  
+// Don't enter scroll mode implicitly when scrolling a pane with the mouse
+scroll_mode_sync false
+
 // Provide a command to execute when copying text. The text will be piped to
 // the stdin of the program to perform the copy. This can be used with
 // terminal emulators which do not support the OSC 52 ANSI control sequence

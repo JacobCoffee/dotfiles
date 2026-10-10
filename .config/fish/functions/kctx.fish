@@ -11,6 +11,7 @@ function kctx --description "Switch Kubernetes context for PSF infrastructure cl
         echo "  pypi       - pypi-cabotage.us-east-2 (kops)"
         echo "  orbstack   - orbstack (local)"
         echo "  minikube   - minikube (local)"
+
         return 0
     end
 
@@ -76,3 +77,4 @@ complete -c kctx -n "not __fish_seen_subcommand_from psf pypi orbstack minikube"
 complete -c kctx -n "not __fish_seen_subcommand_from psf pypi orbstack minikube" -a pypi -d "pypi-cabotage.us-east-2 (kops)"
 complete -c kctx -n "not __fish_seen_subcommand_from psf pypi orbstack minikube" -a orbstack -d "orbstack (local)"
 complete -c kctx -n "not __fish_seen_subcommand_from psf pypi orbstack minikube" -a minikube -d "minikube (local)"
+
