@@ -1,8 +1,3 @@
-# Source Cargo environment
-if test -f ~/.cargo/env
-    bash -c 'source ~/.cargo/env'
-end
-
 #source ~/.profile
 source ~/.config/fish/aliases.fish
 
@@ -13,8 +8,16 @@ set -x SSH_AUTH_SOCK /Users/coffee/Library/Containers/com.maxgoedjen.Secretive.S
 #set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 #gpgconf --launch gpg-agent
 
+fish_add_path --global --move --path /opt/homebrew/bin /opt/homebrew/sbin
 if status is-interactive
-    if test "$TERMINAL_EMULATOR" != "JetBrains-JediTerm"
+  /opt/homebrew/opt/mise/bin/mise activate fish | source
+else
+  /opt/homebrew/opt/mise/bin/mise activate fish --shims | source
+end
+
+if status is-interactive
+    # Existing panes need neither auto-start nor its script-generation subprocess.
+    if test "$TERMINAL_EMULATOR" != "JetBrains-JediTerm"; and not set -q ZELLIJ
         eval (zellij -l compact setup --generate-auto-start fish | string collect)
     end
 end
@@ -46,7 +49,7 @@ set -g theme_powerline_fonts yes
 set -gx EDITOR nvim
 
 # golang
-set -g fish_user_paths "/usr/local/go/bin" fish_user_paths
+set -g fish_user_paths ~/bin/gam7 "/usr/local/go/bin" $fish_user_paths
 set -x  GOPATH   $HOME/GO-lang
 set -x PATH $PATH $GOPATH/bin
 
@@ -61,7 +64,6 @@ set -x PATH $PATH $GOPATH/bin
 set PATH $PATH ~/.local/bin
 
 # PATH
-set PATH $PATH /opt/homebrew/bin
 set PATH $PATH ~/.cargo/bin
 set PATH $PATH ~/.local/share/bob/nvim-bin
 
@@ -99,12 +101,6 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --e
 # TODO: Fix
 set -g FZF_CTRL_T_COMMAND "command find -L \$dir -type f 2> /dev/null | sed '1d; s#^\./##'"
 
-if status is-interactive
-  /opt/homebrew/opt/mise/bin/mise activate fish | source
-else
-  /opt/homebrew/opt/mise/bin/mise activate fish --shims | source
-end
-
 # pnpm
 set -gx PNPM_HOME "/Users/coffee/Library/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
@@ -116,10 +112,16 @@ end
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
-# cpython build stuff
-set -x CPPFLAGS "-I"(brew --prefix)"/include"
-set -x LDFLAGS "-L"(brew --prefix)"/lib"
+# cpython build stuff: resolve the Homebrew prefix once for both flags.
+set -l homebrew_prefix (brew --prefix)
+set -x CPPFLAGS "-I$homebrew_prefix/include"
+set -x LDFLAGS "-L$homebrew_prefix/lib"
 
 
 set -gx BUN_INSTALL "$HOME/.bun"
 set -gx PATH "$BUN_INSTALL/bin" $PATH
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/coffee/.lmstudio/bin
+# End of LM Studio CLI section
+
